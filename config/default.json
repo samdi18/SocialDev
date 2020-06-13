@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://samdi18:samdi1234@socialdev-82gp4.mongodb.net/socialdev?retryWrites=true&w=majority",
+  "jwtSecret": "secret"
+}

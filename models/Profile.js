@@ -5,6 +5,10 @@ const ProfileSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'user',
   },
+  role: {
+    type: String,
+    required: true,
+  },
   company: {
     type: String,
   },
@@ -16,11 +20,9 @@ const ProfileSchema = mongoose.Schema({
   },
   status: {
     type: String,
-    required: true,
   },
   skills: {
     type: [String],
-    required: true,
   },
   bio: {
     type: String,
@@ -48,18 +50,15 @@ const ProfileSchema = mongoose.Schema({
       to: {
         type: Date,
       },
-      current: {
+      status: {
         type: Boolean,
         default: false,
-      },
-      description: {
-        type: String,
       },
     },
   ],
   education: [
     {
-      school: {
+      instituition: {
         type: String,
         required: true,
       },
@@ -67,7 +66,7 @@ const ProfileSchema = mongoose.Schema({
         type: String,
         required: true,
       },
-      fieldofstudy: {
+      department: {
         type: String,
         required: true,
       },
@@ -78,12 +77,9 @@ const ProfileSchema = mongoose.Schema({
       to: {
         type: Date,
       },
-      current: {
+      status: {
         type: Boolean,
         default: false,
-      },
-      description: {
-        type: String,
       },
     },
   ],
@@ -101,6 +97,9 @@ const ProfileSchema = mongoose.Schema({
       type: String,
     },
     instagram: {
+      type: String,
+    },
+    behance: {
       type: String,
     },
   },

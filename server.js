@@ -11,10 +11,10 @@ connectDB();
 app.use(express.json());
 
 // Define Routes
-app.use('api/users', require('./routes/users'));
-app.use('api/auth', require('./routes/auth'));
-// app.use('/profile', require('./routes/profile'));
-// app.use('/threads', require('./routes/posts'));
+app.use('/api/users', require('./routes/users'));
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/profile', require('./routes/profile'));
+// app.use('/threads', require('./routes/threads'));
 
 const PORT = process.env.PORT || 5000;
 

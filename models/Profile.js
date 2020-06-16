@@ -1,9 +1,9 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const ProfileSchema = mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'user',
+    ref: "user",
   },
   role: {
     type: String,
@@ -58,7 +58,7 @@ const ProfileSchema = mongoose.Schema({
   ],
   education: [
     {
-      instituition: {
+      institution: {
         type: String,
         required: true,
       },
@@ -109,4 +109,4 @@ const ProfileSchema = mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model('profile', ProfileSchema);
+module.exports = mongoose.model("profile", ProfileSchema);

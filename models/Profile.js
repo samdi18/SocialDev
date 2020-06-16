@@ -24,6 +24,7 @@ const ProfileSchema = mongoose.Schema({
   skills: {
     type: [String],
   },
+
   bio: {
     type: String,
   },
@@ -45,7 +46,6 @@ const ProfileSchema = mongoose.Schema({
       },
       from: {
         type: Date,
-        required: true,
       },
       to: {
         type: Date,

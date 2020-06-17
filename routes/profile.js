@@ -288,6 +288,26 @@ router.put(
   }
 );
 
+// @route    DELETE api/profile/experience/:exp_id
+// @desc     Delete experience from profile
+// @access   Private
+
+router.delete("/experience/:exp_id", auth, async (req, res) => {
+  try {
+    const profile = await Profile.findOne({ user: req.user.id });
+
+    profile.experience = profile.experience.filter(
+      (exp) => exp._id.toString() !== req.params.exp_id
+    );
+
+    await profile.save();
+    return res.status(200).json(profile);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ msg: "Server error" });
+  }
+});
+
 // @route    PUT api/profile/education
 // @desc     Add profile education
 // @access   Private
@@ -381,7 +401,7 @@ router.put(
 
       //Update an existing experience
       const edIndex = education
-        .map((element) => element.id)
+        .map((element) => element._id)
         .indexOf(req.params.ed_id);
 
       if (edIndex > -1) {
@@ -401,5 +421,27 @@ router.put(
     }
   }
 );
+
+// @route    DELETE api/profile/education/:ed_id
+// @desc     Delete education from profile
+// @access   Private
+
+router.delete("/education/:ed_id", auth, async (req, res) => {
+  try {
+    const profile = await Profile.findOne({ user: req.user.id });
+
+    const edIndex = profile.education
+      .map((element) => element.id)
+      .indexOf(req.params.ed_id);
+
+    profile.education.splice(edIndex, 1);
+
+    await profile.save();
+    return res.status(200).json(profile);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ msg: "Server error" });
+  }
+});
 
 module.exports = router;

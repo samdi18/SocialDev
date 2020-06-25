@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { Route, Switch } from 'react-router-dom';
 
-import './App.css';
+import './App.scss';
+import Navbar from './components/layout/Navbar';
 
-const App = () => {
-  return (
-    <div className='App'>
-      <h1>Hello</h1>
-    </div>
-  );
-};
+const App = () => (
+  <Fragment>
+    <Navbar />
+  </Fragment>
+);
 
 export default App;

@@ -1,19 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
+  const [isOpen, setOpen] = useState(false);
+  const toggleNav = () => {
+    setOpen(!isOpen);
+  };
   return (
     <nav className='navbar '>
-      <h3>
+      <span>
         <Link to='/'> SocialDev</Link>
-      </h3>
+      </span>
 
-      <ul>
-        <li>
-          <Link to='/login'>Sign in</Link>
-        </li>
+      <p className='btn login'>
+        <Link to='/login'>Sign in</Link>
+      </p>
+
+      <img
+        src={require('../../images/hamburger.svg')}
+        alt=''
+        className='ham'
+        onClick={toggleNav}
+      />
+
+      <ul className={`${isOpen ? ' toggle-nav ' : ' '}`}>
         <li>
           <Link to='/members'>Members</Link>
+        </li>
+        <li>
+          <Link to='/about'>About</Link>
         </li>
       </ul>
     </nav>

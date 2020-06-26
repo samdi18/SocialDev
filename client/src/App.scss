@@ -107,24 +107,25 @@ img {
 
   main {
     background-color: $secondary-color;
-    width: 22em;
-    height: 22em;
+    width: 90vw;
+    height: 90vw;
+    padding: 20px 50px;
     border-radius: 50%;
-    position: relative;
+    //position: relative;
 
     .content {
-      position: absolute;
-      top: 60px;
-      left: 40px;
-      font-size: 20%;
+      //position: absolute;
+      // top: 60px;
+      // left: 40px;
+      font-size: 2rem;
       font-weight: bold;
     }
 
     .main-img {
-      position: absolute;
+      //position: absolute;
       width: 15em;
-      bottom: 60px;
-      right: 40px;
+      // bottom: 60px;
+      //right: 40px;
     }
   }
 

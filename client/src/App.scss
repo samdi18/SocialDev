@@ -12,7 +12,7 @@ $secondary-color: #c56060;
 }
 
 body {
-  font-family: "Segoe UI", sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   background-color: $main-color;
@@ -62,9 +62,15 @@ img {
   justify-content: space-between;
   padding: 10px 20px;
 
+  .right-nav {
+    display: flex;
+    justify-content: space-between;
+    width: 120px;
+  }
+
   .ham {
     width: 25px;
-    z-index: 1;
+    z-index: 2;
   }
 
   ul {
@@ -78,6 +84,7 @@ img {
     background-color: $light-color;
     height: 100vh;
     width: 50vw;
+    z-index: 1;
 
     li:first-child {
       margin-top: 100px;
@@ -90,7 +97,6 @@ img {
 
   .login {
     background-color: $primary-color;
-    margin-right: -80px;
   }
 }
 
@@ -101,8 +107,8 @@ img {
 
   main {
     background-color: $secondary-color;
-    width: 350px;
-    height: 350px;
+    width: 22em;
+    height: 22em;
     border-radius: 50%;
     position: relative;
 
@@ -110,13 +116,13 @@ img {
       position: absolute;
       top: 60px;
       left: 40px;
-      font-size: 2rem;
+      font-size: 20%;
       font-weight: bold;
     }
 
     .main-img {
       position: absolute;
-      width: 60%;
+      width: 15em;
       bottom: 60px;
       right: 40px;
     }
@@ -186,4 +192,7 @@ img {
       }
     }
   }
+}
+
+@media (min-width: 1024px) {
 }

@@ -12,16 +12,18 @@ const Navbar = () => {
         <Link to='/'> SocialDev</Link>
       </span>
 
-      <p className='btn login'>
-        <Link to='/login'>Sign in</Link>
-      </p>
+      <div className='right-nav'>
+        <p className='btn login'>
+          <Link to='/login'>Sign in</Link>
+        </p>
 
-      <img
-        src={require('../../images/hamburger.svg')}
-        alt=''
-        className='ham'
-        onClick={toggleNav}
-      />
+        <img
+          src={require('../../images/hamburger.svg')}
+          alt=''
+          className='ham'
+          onClick={toggleNav}
+        />
+      </div>
 
       <ul className={`${isOpen ? ' toggle-nav ' : ' '}`}>
         <li>

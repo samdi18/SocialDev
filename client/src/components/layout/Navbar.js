@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setOpen] = useState(false);
@@ -7,33 +7,39 @@ const Navbar = () => {
     setOpen(!isOpen);
   };
   return (
-    <nav className='navbar '>
-      <span>
-        <Link to='/'> SocialDev</Link>
+    <header>
+      <span className="brand-logo">
+        <Link to="/"> SocialDev</Link>
       </span>
 
-      <div className='right-nav'>
-        <p className='btn login'>
-          <Link to='/login'>Sign in</Link>
-        </p>
+      <nav>
+        <div className="right-nav">
+          <div className="btn login">
+            <Link to="/login">Sign in</Link>
+          </div>
 
-        <img
-          src={require('../../images/hamburger.svg')}
-          alt=''
-          className='ham'
-          onClick={toggleNav}
-        />
-      </div>
+          <img
+            src={require("../../images/hamburger.svg")}
+            alt=""
+            className="ham hide-desktop"
+            onClick={toggleNav}
+          />
+        </div>
 
-      <ul className={`${isOpen ? ' toggle-nav ' : ' '}`}>
-        <li>
-          <Link to='/members'>Members</Link>
-        </li>
-        <li>
-          <Link to='/about'>About</Link>
-        </li>
-      </ul>
-    </nav>
+        <ul
+          className={`show-desktop hide-mobile ${
+            isOpen ? " toggle-nav " : " "
+          }`}
+        >
+          <li>
+            <Link to="/members">Members</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+        </ul>
+      </nav>
+    </header>
   );
 };
 

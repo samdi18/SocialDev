@@ -12,7 +12,7 @@ $secondary-color: #c56060;
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   background-color: $main-color;
@@ -44,94 +44,126 @@ img {
   display: flex !important;
 }
 
+.hide-mobile {
+  display: none;
+}
+
 .btn {
   border-radius: 6px;
-  padding: 3px 17px;
+  padding: 0.1em 0.7em;
+  padding-bottom: 4px;
   border: 0;
 }
 
 .submit-btn {
   border-radius: 6px;
-  padding: 10px 10px;
+  width: 40px;
+  height: 40px;
   border: none;
   background-color: $primary-color;
 }
 
-.navbar {
+header {
   display: flex;
   justify-content: space-between;
   padding: 10px 20px;
 
-  .right-nav {
-    display: flex;
-    justify-content: space-between;
-    width: 120px;
-  }
-
-  .ham {
-    width: 25px;
-    z-index: 2;
-  }
-
-  ul {
-    display: none;
-    align-items: flex-start;
-    padding-left: 1.2em;
-    flex-direction: column;
-    position: absolute;
-    right: 0;
-    top: 0;
-    background-color: $light-color;
-    height: 100vh;
-    width: 50vw;
-    z-index: 1;
-
-    li:first-child {
-      margin-top: 100px;
+  nav {
+    .right-nav {
+      display: flex;
+      justify-content: space-between;
+      width: 120px;
     }
 
-    li {
-      font-size: 1.6rem;
+    .ham {
+      width: 25px;
+      z-index: 2;
     }
-  }
 
-  .login {
-    background-color: $primary-color;
+    ul {
+      padding-left: 1.2em;
+      flex-direction: column;
+      position: absolute;
+      right: 0;
+      top: 0;
+      background-color: $light-color;
+      height: 100vh;
+      width: 50vw;
+      max-width: 700px;
+      z-index: 1;
+
+      li:first-child {
+        margin-top: 100px;
+      }
+
+      li {
+        font-size: 1.6rem;
+      }
+    }
+
+    .login {
+      background-color: $primary-color;
+    }
   }
 }
 
+.home-anim {
+  width: 90vw;
+  position: relative;
+}
+
+.home-text {
+  position: absolute;
+  font-size: 8vw;
+  font-weight: bold;
+}
+
+.text-1 {
+  top: 0;
+  right: 20%;
+}
+.text-2 {
+  left: 0;
+  top: 30%;
+}
+.text-3 {
+  right: 0;
+  bottom: 40%;
+}
+
 .home-flex {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   align-items: center;
+  margin: auto;
+  padding: 10px 20px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 
   main {
     background-color: $secondary-color;
-    width: 90vw;
-    height: 90vw;
-    padding: 20px 50px;
+    width: 100%;
+    padding-bottom: 100%;
     border-radius: 50%;
-    //position: relative;
+    position: relative;
 
     .content {
-      //position: absolute;
-      // top: 60px;
-      // left: 40px;
-      font-size: 2rem;
+      position: absolute;
+      top: 10%;
+      left: 20%;
+      font-size: 8vw;
       font-weight: bold;
     }
 
     .main-img {
-      //position: absolute;
-      width: 15em;
-      // bottom: 60px;
-      //right: 40px;
+      position: absolute;
+      width: 60%;
+      bottom: 19%;
+      right: 10%;
     }
   }
 
   section {
     background-color: $light-color;
-    margin-top: 40px;
     padding: 30px 25px;
     border-radius: 13px;
     position: relative;
@@ -165,10 +197,11 @@ img {
     .code {
       margin-top: 1em;
       margin-bottom: 2em;
+      font-size: 5vw;
     }
 
     .cross-img {
-      width: 10px;
+      width: 70%;
     }
 
     .code-box {
@@ -190,10 +223,225 @@ img {
       button {
         position: absolute;
         right: 0;
+
+        .arrow-img {
+          width: 60%;
+        }
+      }
+    }
+  }
+}
+
+.form-box {
+  background-color: $light-color;
+  padding: 20px 25px;
+  border-radius: 13px;
+
+  h3 {
+    font-size: 1.6em;
+    text-align: center;
+  }
+
+  .auth-form {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      margin-bottom: 5px;
+    }
+
+    input[type="text"] {
+      padding: 10px 15px;
+      border-radius: 7px;
+      border: none;
+      outline: none;
+      margin-bottom: 10px;
+    }
+
+    button {
+      margin-top: 10px;
+      align-self: flex-end;
+
+      .arrow-img {
+        width: 60%;
       }
     }
   }
 }
 
 @media (min-width: 1024px) {
+  .home-flex {
+    .visual-buttons {
+      display: flex;
+      position: absolute;
+      top: 8px;
+      right: 8px;
+
+      .round-btn {
+        width: 40px !important;
+        height: 40px !important;
+        border-radius: 50%;
+        margin-right: 5px;
+      }
+    }
+
+    .code-box {
+      input {
+        font-size: 25px;
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .show-desktop {
+    display: flex;
+  }
+
+  .hide-desktop {
+    display: none;
+  }
+
+  header {
+    padding: 20px 70px;
+    nav {
+      display: flex;
+      ul {
+        padding-left: 0;
+        flex-direction: row;
+        position: inherit;
+        background: none;
+        height: auto;
+        width: auto;
+
+        li:first-child {
+          margin-top: 0px;
+        }
+
+        li {
+          font-size: 1rem;
+          margin-left: 30px;
+        }
+      }
+    }
+  }
+
+  .home-anim {
+    width: 600px;
+  }
+
+  .home-text {
+    font-size: 50px;
+  }
+
+  .container {
+    padding: 20px 70px;
+  }
+  .home-flex {
+    grid-template-columns: 2fr 1fr;
+    padding: 20px 70px;
+    margin-top: 1em;
+
+    main {
+      width: 700px;
+      height: 700px;
+      padding-bottom: 0;
+      .content {
+        font-size: 58px;
+      }
+    }
+
+    section {
+      background-color: $light-color;
+      margin-top: 40px;
+      padding: 30px 25px;
+      border-radius: 13px;
+      position: relative;
+      max-width: 400px;
+
+      .visual-buttons {
+        display: flex;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+
+        .round-btn {
+          width: 23px !important;
+          height: 23px !important;
+          border-radius: 50%;
+          margin-right: 5px;
+        }
+
+        .round-1 {
+          background-color: #c7d5a9;
+        }
+        .round-2 {
+          background-color: #d5a9af;
+        }
+        .exit {
+          background-color: $secondary-color;
+          display: flex;
+          justify-content: center;
+        }
+      }
+
+      .code {
+        margin-top: 1em;
+        margin-bottom: 2em;
+        font-size: 25px;
+      }
+
+      .cross-img {
+        width: 70%;
+      }
+
+      .code-box {
+        background-color: white;
+        height: 40px;
+        position: relative;
+        border-radius: 7px;
+        border: none;
+
+        input {
+          background: transparent;
+          height: 100%;
+          width: 80%;
+          border: none;
+          outline: none;
+          padding: 10px;
+        }
+
+        button {
+          position: absolute;
+          right: 0;
+
+          .arrow-img {
+            width: 60%;
+          }
+        }
+      }
+    }
+  }
+
+  .form-box {
+    max-width: 400px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .home-anim {
+    width: 700px;
+  }
+
+  .home-text {
+    font-size: 60px;
+  }
+
+  section {
+    padding: 30px 45px !important;
+
+    .code {
+      font-size: 30px !important;
+    }
+  }
 }

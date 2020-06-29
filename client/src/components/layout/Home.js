@@ -1,11 +1,13 @@
-import React from "react";
-import CodeForm from "./CodeForm";
-import Animation from "./Animation";
-import Register from "../auth/Register";
+import React, { useState } from 'react';
+import CodeForm from './CodeForm';
+import Animation from './Animation';
+import Register from '../auth/Register';
 
 const Home = () => {
+  const [flag, setFlag] = useState(false);
+
   return (
-    <div className="home-flex">
+    <div className='home-flex'>
       {/* <main>
         <div className="content">
           <p>Collaborate.</p>
@@ -21,7 +23,7 @@ const Home = () => {
       </main> */}
       <Animation />
 
-      <Register />
+      {flag ? <Register /> : <CodeForm setFlag={setFlag} />}
     </div>
   );
 };

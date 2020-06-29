@@ -1,20 +1,28 @@
-import React, { Fragment } from "react";
-import { Route, Switch } from "react-router-dom";
+import React, { Fragment } from 'react';
+import { Route, Switch } from 'react-router-dom';
 
-import "./App.scss";
-import Navbar from "./components/layout/Navbar";
-import Home from "./components/layout/Home";
+import './App.scss';
+import Navbar from './components/layout/Navbar';
+import Home from './components/layout/Home';
+import Login from './components/auth/Login';
+import Alert from './components/layout/Alert';
+
+// Redux
+import { Provider } from 'react-redux';
+import store from './store';
 
 const App = () => (
-  <Fragment>
-    <Navbar />
+  <Provider store={store}>
+    <Fragment>
+      <Navbar />
+      <Alert />
 
-    <div className="">
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route path='/register' component={Home} />
+        <Route path='/login' component={Login} />
       </Switch>
-    </div>
-  </Fragment>
+    </Fragment>
+  </Provider>
 );
 
 export default App;

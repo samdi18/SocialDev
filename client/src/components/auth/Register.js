@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { setAlert } from '../../actions/alert';
-import { register } from '../../actions/auth';
-import PropTypes from 'prop-types';
+import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { setAlert } from "../../actions/alert";
+import { register } from "../../actions/auth";
+import PropTypes from "prop-types";
 
 const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    password2: '',
+    name: "",
+    email: "",
+    password: "",
+    password2: "",
   });
 
   const { name, email, password, password2 } = formData;
@@ -23,7 +23,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     e.preventDefault();
 
     if (password !== password2) {
-      setAlert("Passwords don't match", 'danger');
+      setAlert("Passwords don't match", "danger");
     } else {
       console.log(formData);
       register(formData);
@@ -31,40 +31,40 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   };
 
   if (isAuthenticated) {
-    return <Redirect to='/' />;
+    return <Redirect to="/" />;
   }
 
   return (
-    <div className='form-box'>
+    <div className="form-box">
       <h3>Sign Up</h3>
-      <form className='auth-form' onSubmit={handleSubmit}>
-        <label htmlFor='name'>Full Name</label>
-        <input type='text' name='name' value={name} onChange={handleChange} />
+      <form className="auth-form" onSubmit={handleSubmit}>
+        <label htmlFor="name">Full Name</label>
+        <input type="text" name="name" value={name} onChange={handleChange} />
 
-        <label htmlFor='email'>Email</label>
-        <input type='text' name='email' value={email} onChange={handleChange} />
+        <label htmlFor="email">Email</label>
+        <input type="text" name="email" value={email} onChange={handleChange} />
 
-        <label htmlFor='password'>Password</label>
+        <label htmlFor="password">Password</label>
         <input
-          type='text'
-          name='password'
+          type="text"
+          name="password"
           value={password}
           onChange={handleChange}
         />
 
-        <label htmlFor='password2'>Confirm Password</label>
+        <label htmlFor="password2">Confirm Password</label>
         <input
-          type='text'
-          name='password2'
+          type="text"
+          name="password2"
           value={password2}
           onChange={handleChange}
         />
 
-        <button className='submit-btn'>
+        <button className="submit-btn">
           <img
-            src={require('../../images/arrow.svg')}
-            alt=''
-            className='arrow-img'
+            src={require("../../images/arrow.svg")}
+            alt=""
+            className="arrow-img"
           />
         </button>
       </form>
@@ -77,4 +77,9 @@ Register.prototypes = {
   login: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool,
 };
-export default connect(null, { setAlert, register })(Register);
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { setAlert, register })(Register);

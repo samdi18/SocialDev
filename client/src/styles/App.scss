@@ -12,7 +12,7 @@ $secondary-color: #c56060;
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   background-color: $main-color;
@@ -70,6 +70,7 @@ img {
   padding: 0.1em 0.7em;
   padding-bottom: 4px;
   border: 0;
+  cursor: pointer;
 }
 
 .submit-btn {
@@ -78,6 +79,7 @@ img {
   height: 40px;
   border: none;
   background-color: $primary-color;
+  cursor: pointer;
 }
 
 header {
@@ -271,7 +273,7 @@ header {
       margin-bottom: 5px;
     }
 
-    input[type='text'] {
+    input[type="text"] {
       padding: 10px 15px;
       border-radius: 7px;
       border: none;
@@ -467,4 +469,4 @@ header {
   }
 }
 
-@import 'CreateProfile';
+@import "CreateProfile";

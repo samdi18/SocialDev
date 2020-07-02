@@ -1,11 +1,9 @@
 import React, { Fragment, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import './App.scss';
+import './styles/App.scss';
 import Navbar from './components/layout/Navbar';
-import Home from './components/layout/Home';
-import Login from './components/auth/Login';
-import Alert from './components/layout/Alert';
+import Routes from './components/routing/Routes';
 
 // Redux
 import { Provider } from 'react-redux';
@@ -23,11 +21,9 @@ const App = () => {
     <Provider store={store}>
       <Fragment>
         <Navbar />
-        <Alert />
 
         <Switch>
-          <Route path='/register' component={Home} />
-          <Route path='/login' component={Login} />
+          <Route component={Routes} />
         </Switch>
       </Fragment>
     </Provider>

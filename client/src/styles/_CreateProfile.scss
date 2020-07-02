@@ -1,0 +1,74 @@
+.cont {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.wrapper {
+  margin: 10px 20px;
+}
+
+.create-profile {
+  background-color: $light-color;
+  padding: 20px 25px;
+  border-radius: 13px;
+  max-width: 1200px;
+  width: 100%;
+
+  h4 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+
+  .profile-form {
+    display: flex;
+    flex-direction: column;
+
+    .social-links {
+      background-color: $primary-color;
+      display: inline-block;
+    }
+
+    .social-links-wrapper {
+      margin-top: 15px;
+
+      // .social-top {
+      //   margin-top: 20px;
+      // }
+
+      .form-element:nth-child(2) {
+        margin-top: 15px;
+      }
+    }
+
+    .form-element {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
+      label {
+        margin-bottom: 5px;
+      }
+
+      input[type='text'],
+      select {
+        padding: 10px 15px;
+        border-radius: 7px;
+        border: none;
+        outline: none;
+        margin-bottom: 10px;
+        background-color: $main-color;
+        color: white;
+      }
+    }
+
+    button {
+      margin-top: 10px;
+      align-self: flex-end;
+
+      .arrow-img {
+        width: 60%;
+      }
+    }
+  }
+}

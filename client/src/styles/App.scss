@@ -51,7 +51,6 @@ img {
 }
 
 .container {
-  max-width: 1100px;
   margin: auto;
   padding: 10px 20px;
   margin-top: 4rem;
@@ -121,6 +120,10 @@ header {
 
     .login {
       background-color: $primary-color;
+    }
+
+    .logout {
+      background-color: $secondary-color;
     }
   }
 }
@@ -463,3 +466,5 @@ header {
     }
   }
 }
+
+@import 'CreateProfile';

@@ -1,4 +1,4 @@
-.cont {
+.form-flex {
   display: flex;
   justify-content: center;
   width: 100%;
@@ -8,7 +8,7 @@
   margin: 10px 20px;
 }
 
-.create-profile {
+.form-wrapper {
   background-color: $light-color;
   padding: 20px 25px;
   border-radius: 13px;
@@ -17,6 +17,9 @@
 
   h4 {
     font-size: 1.2rem;
+  }
+
+  .form-header {
     margin-bottom: 15px;
   }
 
@@ -51,7 +54,10 @@
       }
 
       input[type='text'],
-      select {
+      input[type='date'],
+      input[type='checkbox'],
+      select,
+      textarea {
         padding: 10px 15px;
         border-radius: 7px;
         border: none;
@@ -60,6 +66,14 @@
         background-color: $main-color;
         color: white;
       }
+    }
+
+    .status-flex {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 12%;
     }
 
     button {

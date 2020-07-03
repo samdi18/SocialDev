@@ -1,49 +1,50 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import { Fragment } from "react";
-import ProgrammerProfileForm from "./ProgrammerProfileForm";
-import HirerProfileForm from "./HirerProfileForm";
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { Fragment } from 'react';
+import ProgrammerProfileForm from './ProgrammerProfileForm';
+import HirerProfileForm from './HirerProfileForm';
+import { connect } from 'react-redux';
+import { createProfile } from '../../../actions/profile';
 
 const CreateProfile = () => {
-  const [role, setRole] = useState("Programmer");
-
-  const handleChange = (e) => {};
+  const [role, setRole] = useState('Programmer');
+  const [formData, setFormData] = useState({});
 
   const handleRole = (e) => {
     setRole(e.target.value);
-    console.log(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("form profile submited");
+    createProfile({ ...formData, role }, false);
+    console.log({ ...formData, role });
   };
 
   return (
-    <div className="cont">
-      <div className="create-profile wrapper">
-        <h4>Create Profile</h4>
+    <div className='form-flex'>
+      <div className='form-wrapper wrapper'>
+        <h4 className='form-header'>Create Profile</h4>
 
-        <form className="profile-form">
-          <div className="form-element">
-            <label htmlFor="role">* Role</label>
-            <select name="role" defaultValue={role} onChange={handleRole}>
-              <option value="Hirer">Hirer</option>
-              <option value="Programmer">Programmer</option>
+        <form className='profile-form' onSubmit={handleSubmit}>
+          <div className='form-element'>
+            <label htmlFor='role'>* Role</label>
+            <select name='role' defaultValue={role} onChange={handleRole}>
+              <option value='Hirer'>Hirer</option>
+              <option value='Programmer'>Programmer</option>
             </select>
           </div>
 
-          {role === "Programmer" ? (
-            <ProgrammerProfileForm />
+          {role === 'Programmer' ? (
+            <ProgrammerProfileForm setFormData={setFormData} />
           ) : (
-            <HirerProfileForm />
+            <HirerProfileForm setFormData={setFormData} />
           )}
 
-          <button className="submit-btn">
+          <button className='submit-btn'>
             <img
-              src={require("../../../images/arrow.svg")}
-              alt=""
-              className="arrow-img"
+              src={require('../../../images/arrow.svg')}
+              alt=''
+              className='arrow-img'
             />
           </button>
         </form>
@@ -54,4 +55,4 @@ const CreateProfile = () => {
 
 CreateProfile.propTypes = {};
 
-export default CreateProfile;
+export default connect(null, { createProfile })(CreateProfile);

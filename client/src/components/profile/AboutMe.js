@@ -13,6 +13,7 @@ const AboutMe = () => {
       </div>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio amet
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio amet
       </p>
     </div>
   );

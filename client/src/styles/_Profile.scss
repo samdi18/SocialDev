@@ -3,7 +3,7 @@
   margin-right: 12px;
 }
 
-.user-area {
+.user-card {
   display: flex;
   justify-content: space-between;
 
@@ -109,16 +109,19 @@
   }
 }
 
-@media only screen and (min-width: 1700px) {
+@media only screen and (min-width: 1200px) {
   .profile-grid {
+    padding: 20px 70px;
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: auto auto;
     grid-template-areas:
       "user-area social-media-area"
       "about-area skills-area"
       "education-area experience-area";
-    align-content: center;
+
+    grid-column-gap: 12rem;
+    grid-row-gap: 1rem;
   }
 
   .user-area {

@@ -27,7 +27,9 @@ export const getMyProfile = () => async (dispatch) => {
 };
 
 // Create or update profile
-export const createProfile = (formData, edit = false) => async (dispatch) => {
+export const createProfile = (formData, history, edit = false) => async (
+  dispatch
+) => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
@@ -44,10 +46,10 @@ export const createProfile = (formData, edit = false) => async (dispatch) => {
 
     dispatch(setAlert(edit ? 'Profile Updated' : 'Profile Created', 'success'));
 
-    ///go to dashboard if im creating a profile not when updating
-    // if (!edit) {
-    //   history.push('/');
-    // }
+    //go to dashboard if im creating a profile not when updating
+    if (!edit) {
+      history.push('/');
+    }
   } catch (err) {
     const errors = err.response.data.errors;
 

@@ -1,14 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Fragment } from 'react';
 import ProgrammerProfileForm from './ProgrammerProfileForm';
 import HirerProfileForm from './HirerProfileForm';
 import { connect } from 'react-redux';
-import { createProfile } from '../../../actions/profile';
+import { createProfile, getMyProfile } from '../../../actions/profile';
 
-const CreateProfile = ({ createProfile }) => {
+const CreateProfile = ({
+  createProfile,
+  getMyProfile,
+  profile: { profile, loading },
+  history,
+}) => {
   const [role, setRole] = useState('Programmer');
   const [formData, setFormData] = useState({});
+
+  useEffect(() => {
+    getMyProfile();
+  }, []);
 
   const handleRole = (e) => {
     setRole(e.target.value);
@@ -16,7 +25,7 @@ const CreateProfile = ({ createProfile }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createProfile({ ...formData, role }, false);
+    createProfile({ ...formData, role }, history, false);
     console.log({ ...formData, role });
   };
 
@@ -53,6 +62,16 @@ const CreateProfile = ({ createProfile }) => {
   );
 };
 
-CreateProfile.propTypes = {};
+CreateProfile.propTypes = {
+  createProfile: PropTypes.func.isRequired,
+  getMyProfile: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired,
+};
 
-export default connect(null, { createProfile })(CreateProfile);
+const mapStateToProps = (state) => ({
+  profile: state.profile,
+});
+
+export default connect(mapStateToProps, { createProfile, getMyProfile })(
+  CreateProfile
+);

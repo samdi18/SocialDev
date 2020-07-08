@@ -16,8 +16,21 @@ const CreateProfile = ({
   const [formData, setFormData] = useState({});
 
   useEffect(() => {
-    getMyProfile();
-  }, []);
+    if (!profile) getMyProfile(); // !null = true
+
+    // if (!loading && profile) {
+    //   const profileData = { ...formData };
+    //   for (const key in profile) {
+    //     if (key in profileData) profileData[key] = profile[key];
+    //   }
+    //   for (const key in profile.social) {
+    //     if (key in profileData) profileData[key] = profile.social[key];
+    //   }
+    //   if (Array.isArray(profileData.skills))
+    //     profileData.skills = profileData.skills.join(', ');
+    //   setFormData(profileData);
+    // }
+  }, [loading, getMyProfile, profile]);
 
   const handleRole = (e) => {
     setRole(e.target.value);
@@ -25,7 +38,7 @@ const CreateProfile = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createProfile({ ...formData, role }, history, false);
+    createProfile({ ...formData, role }, history, profile ? true : false);
     console.log({ ...formData, role });
   };
 

@@ -3,14 +3,16 @@ import { connect } from 'react-redux';
 import MyProfile from '../profile/MyProfile';
 import CreateProfile from '../profile/forms/CreateProfile';
 
-const Home = ({ profile }) => {
+const Home = ({ profile: { loading, profile } }) => {
   return (
-    <Fragment>{profile !== null ? <MyProfile /> : <CreateProfile />}</Fragment>
+    <Fragment>
+      {profile && profile !== null ? <MyProfile /> : <CreateProfile />}
+    </Fragment>
   );
 };
 
 const mapStatetoProps = (state) => ({
-  profile: state.profile.profile,
+  profile: state.profile,
 });
 
 export default connect(mapStatetoProps)(Home);

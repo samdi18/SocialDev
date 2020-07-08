@@ -21,6 +21,7 @@ const Routes = (props) => {
         <PrivateRoute exact path='/' component={Home} />
         <PrivateRoute exact path='/create-profile' component={CreateProfile} />
         <PrivateRoute exact path='/my-profile' component={MyProfile} />
+        <PrivateRoute exact path='/edit-profile' component={CreateProfile} />
         <PrivateRoute
           exact
           path='/add-experience'

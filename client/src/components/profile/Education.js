@@ -6,9 +6,14 @@ const Education = () => {
     <div className="profile-content card-margin card">
       <div className="profile-header">
         <h3>Education</h3>
+        <img
+          src={require("../../images/add-btn.svg")}
+          alt=""
+          className="icon"
+        />
       </div>
 
-      <ul>
+      <ul className="scrollable">
         <EducationItem />
         <EducationItem />
         <EducationItem />

@@ -11,9 +11,18 @@ const Skills = () => {
           className="icon edit-margin"
         />
       </div>
-      <ul>
+      <ul className="scrollable">
         <li className="tag">HTML</li>
         <li className="tag">CSS</li>
+        <li className="tag">JS</li>
+        <li className="tag">JS</li>
+        <li className="tag">JS</li>
+        <li className="tag">JS</li>
+        <li className="tag">JS</li>
+        <li className="tag">JS</li>
+        <li className="tag">JS</li>
+        <li className="tag">JS</li>
+        <li className="tag">JS</li>
         <li className="tag">JS</li>
         <li className="tag">JS</li>
         <li className="tag">JS</li>

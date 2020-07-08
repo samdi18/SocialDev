@@ -1,31 +1,16 @@
-import React, { useState } from 'react';
-import CodeForm from './CodeForm';
-import Animation from './Animation';
-import Register from '../auth/Register';
+import React, { Fragment } from 'react';
+import { connect } from 'react-redux';
+import MyProfile from '../profile/MyProfile';
+import CreateProfile from '../profile/forms/CreateProfile';
 
-const Home = () => {
-  const [flag, setFlag] = useState(false);
-
+const Home = ({ profile }) => {
   return (
-    <div className='home-flex'>
-      {/* <main>
-        <div className="content">
-          <p>Collaborate.</p>
-          <p>Share.</p>
-          <p>Learn.</p>
-        </div>
-
-        <img
-          src={require("../../images/main.svg")}
-          alt=""
-          className="main-img"
-        />
-      </main> */}
-      <Animation />
-
-      {flag ? <Register /> : <CodeForm setFlag={setFlag} />}
-    </div>
+    <Fragment>{profile !== null ? <MyProfile /> : <CreateProfile />}</Fragment>
   );
 };
 
-export default Home;
+const mapStatetoProps = (state) => ({
+  profile: state.profile.profile,
+});
+
+export default connect(mapStatetoProps)(Home);

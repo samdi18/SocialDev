@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { Fragment } from "react";
+
+import { withRouter } from "react-router-dom";
 import ProgrammerProfileForm from "./ProgrammerProfileForm";
 import HirerProfileForm from "./HirerProfileForm";
 import { connect } from "react-redux";
@@ -86,5 +87,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, { createProfile, getMyProfile })(
-  CreateProfile
+  withRouter(CreateProfile)
 );

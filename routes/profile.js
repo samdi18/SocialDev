@@ -20,6 +20,7 @@ router.get('/myprofile', auth, async (req, res) => {
     }).populate('user', ['name', 'userImage']);
 
     if (!profile) {
+      console.log('profile finding error');
       return res.status(400).json({ msg: 'There is no profile for this user' });
     }
 
@@ -101,7 +102,7 @@ router.post(
         { $set: profileFields },
         { new: true, upsert: true }
       );
-      res.json(profile);
+      return res.json(profile);
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server Error');

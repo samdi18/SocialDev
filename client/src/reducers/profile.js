@@ -4,10 +4,10 @@ import {
   CLEAR_PROFILE,
   UPDATE_PROFILE,
   GET_PROFILES,
-} from '../actions/types';
+} from "../actions/types";
 
 const initialState = {
-  profile: null,
+  profile: {},
   profiles: [],
   repos: [],
   loading: true,

@@ -25,7 +25,7 @@ const MyProfile = ({ profile: { profile }, auth, getMyProfile }) => {
               <img src={require("../../images/user.jpg")} alt="" className="" />
             </div>
             <div className="user-info">
-              <h3 className="username">{user.name}</h3>
+              <h3 className="username">{user && user.name}</h3>
               <p>
                 <span>
                   <img

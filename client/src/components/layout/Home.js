@@ -1,12 +1,21 @@
-import React, { Fragment } from 'react';
-import { connect } from 'react-redux';
-import MyProfile from '../profile/MyProfile';
-import CreateProfile from '../profile/forms/CreateProfile';
+import React, { Fragment, useEffect } from "react";
+import { connect } from "react-redux";
+import MyProfile from "../profile/MyProfile";
+import CreateProfile from "../profile/forms/CreateProfile";
 
-const Home = ({ profile: { loading, profile } }) => {
+import { getMyProfile } from "../../actions/profile";
+
+const Home = ({ profile: { loading, profile }, getMyProfile }) => {
+  useEffect(() => {
+    getMyProfile();
+  }, [getMyProfile]);
   return (
     <Fragment>
-      {profile && profile !== null ? <MyProfile /> : <CreateProfile />}
+      {profile && loading && profile === null ? (
+        <CreateProfile />
+      ) : (
+        <MyProfile />
+      )}
     </Fragment>
   );
 };
@@ -15,4 +24,4 @@ const mapStatetoProps = (state) => ({
   profile: state.profile,
 });
 
-export default connect(mapStatetoProps)(Home);
+export default connect(mapStatetoProps, { getMyProfile })(Home);

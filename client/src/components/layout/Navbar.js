@@ -4,11 +4,13 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
 
-const Navbar = ({ logout, auth: { isAuthenticated, loading } }) => {
+const Navbar = ({ logout, auth: { isAuthenticated, loading }, match }) => {
   const [isOpen, setOpen] = useState(false);
   const toggleNav = () => {
     setOpen(!isOpen);
   };
+
+  console.log(match);
 
   const authLinks = (
     <ul className={`show-desktop hide-mobile ${isOpen ? ' toggle-nav ' : ' '}`}>

@@ -9,7 +9,7 @@ import Skills from "./Skiils";
 import Education from "./Education";
 import Experience from "./Experience";
 
-const MyProfile = ({ profile: { profile }, auth, getMyProfile }) => {
+const MyProfile = ({ profile: { loading, profile }, auth, getMyProfile }) => {
   useEffect(() => {
     getMyProfile();
   }, [getMyProfile]);

@@ -23,6 +23,8 @@ export const getMyProfile = () => async (dispatch) => {
       type: PROFILE_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },
     });
+    // console.log(err.response.data.msg, "err to check");
+    // dispatch(setAlert(err.response.data.msg, "danger"));
   }
 };
 
@@ -52,7 +54,6 @@ export const createProfile = (formData, history, edit = false) => async (
     }
   } catch (err) {
     const errors = err.response.data.errors;
-
     if (errors) {
       errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
     }

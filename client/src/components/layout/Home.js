@@ -11,8 +11,14 @@ const Home = ({ profile: { loading, profile }, getMyProfile }) => {
   }, [getMyProfile]);
   return (
     <Fragment>
-      {profile && loading && profile === null ? (
-        <CreateProfile />
+      {profile === null ? (
+        loading ? (
+          " "
+        ) : (
+          <CreateProfile />
+        )
+      ) : loading ? (
+        " "
       ) : (
         <MyProfile />
       )}

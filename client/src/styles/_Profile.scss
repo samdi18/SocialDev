@@ -140,6 +140,14 @@
   }
 }
 
+.content-info {
+  h4 {
+    span {
+      font-size: 0.8em;
+    }
+  }
+}
+
 @media only screen and (min-width: 1200px) {
   .card {
     width: 500px;

@@ -1,6 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
-const AboutMe = () => {
+const AboutMe = ({ profile }) => {
+  const { bio } = profile;
   return (
     <div className="card-margin card">
       <div className="profile-header">
@@ -11,12 +14,17 @@ const AboutMe = () => {
           className="icon edit-margin"
         />
       </div>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio amet
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio amet
-      </p>
+      <p>{bio}</p>
     </div>
   );
 };
 
-export default AboutMe;
+AboutMe.propTypes = {
+  profile: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  profile: state.profile.profile,
+});
+
+export default connect(mapStateToProps)(AboutMe);

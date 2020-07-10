@@ -1,6 +1,12 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
-const Skills = () => {
+const Skills = ({ profile }) => {
+  const { skills } = profile;
+
+  const skillsArr = skills.map((skill) => <li className="tag">{skill}</li>);
+
   return (
     <div className="card-margin card">
       <div className="profile-header">
@@ -11,27 +17,17 @@ const Skills = () => {
           className="icon edit-margin"
         />
       </div>
-      <ul className="scrollable">
-        <li className="tag">HTML</li>
-        <li className="tag">CSS</li>
-        <li className="tag">JS</li>
-        <li className="tag">JS</li>
-        <li className="tag">JS</li>
-        <li className="tag">JS</li>
-        <li className="tag">JS</li>
-        <li className="tag">JS</li>
-        <li className="tag">JS</li>
-        <li className="tag">JS</li>
-        <li className="tag">JS</li>
-        <li className="tag">JS</li>
-        <li className="tag">JS</li>
-        <li className="tag">JS</li>
-        <li className="tag">JS</li>
-        <li className="tag">JS</li>
-        <li className="tag">JS</li>
-      </ul>
+      <ul className="scrollable">{skillsArr.length === 0 ? "" : skillsArr}</ul>
     </div>
   );
 };
 
-export default Skills;
+Skills.propTypes = {
+  profile: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  profile: state.profile.profile,
+});
+
+export default connect(mapStateToProps)(Skills);

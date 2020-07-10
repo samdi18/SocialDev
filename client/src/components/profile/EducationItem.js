@@ -1,15 +1,27 @@
 import React, { Fragment, useState } from "react";
+import moment from "moment";
+import Moment from "react-moment";
 
-const EducationItem = () => {
+const EducationItem = ({ item }) => {
   const [dropdown, setDropdown] = useState(false);
   return (
     <Fragment>
       <li>
         <div className="content">
           <div className="content-info">
-            <h4>Junior Web Developer</h4>
+            <h4>{item.degree}</h4>
             <h4>
-              Google <br /> <span>(from 10.02.19 to 10.02.19)</span>
+              {item.institution} <br />{" "}
+              <span>
+                {"("}from{" "}
+                <Moment format="YYYY/MM/DD">{moment.utc(item.from)}</Moment> to{" "}
+                {item.to === null ? (
+                  " Now"
+                ) : (
+                  <Moment format="YYYY/MM/DD">{moment.utc(item.to)}</Moment>
+                )}
+                {")"}
+              </span>
             </h4>
           </div>
           <div className="profile-btns">

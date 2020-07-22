@@ -1,5 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+
 import MyProfile from '../profile/MyProfile';
 import CreateProfile from '../profile/forms/CreateProfile';
 
@@ -15,12 +17,12 @@ const Home = ({ profile: { loading, profile }, getMyProfile }) => {
         loading ? (
           ' '
         ) : (
-          <CreateProfile />
+          <Redirect to='/create-profile' />
         )
       ) : loading ? (
         ' '
       ) : (
-        <MyProfile />
+        <Redirect to='/my-profile' />
       )}
     </Fragment>
   );

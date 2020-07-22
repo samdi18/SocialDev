@@ -1,22 +1,22 @@
 import React, { useState, Fragment } from 'react';
 
-const ProgrammerProfileForm = ({ setFormData }) => {
+const ProgrammerProfileForm = ({ formData, setFormData }) => {
   const [openSocialInputs, toggleSocialInputs] = useState(false);
-  const [programmerFormData, setProgrammerFormData] = useState({
-    company: '',
-    website: '',
-    location: '',
-    status: '',
-    skills: '',
-    github: '',
-    bio: '',
-    twitter: '',
-    facebook: '',
-    linkedin: '',
-    behance: '',
-    youtube: '',
-    instagram: '',
-  });
+  // const [programmerFormData, setProgrammerFormData] = useState({
+  //   company: '',
+  //   website: '',
+  //   location: '',
+  //   status: '',
+  //   skills: '',
+  //   github: '',
+  //   bio: '',
+  //   twitter: '',
+  //   facebook: '',
+  //   linkedin: '',
+  //   behance: '',
+  //   youtube: '',
+  //   instagram: '',
+  // });
 
   const {
     company,
@@ -32,15 +32,17 @@ const ProgrammerProfileForm = ({ setFormData }) => {
     behance,
     youtube,
     instagram,
-  } = programmerFormData;
+  } = formData;
+
+  console.log('form data inside: ', formData);
 
   const handleChange = (e) => {
-    setProgrammerFormData({
-      ...programmerFormData,
+    setFormData({
+      ...formData,
       [e.target.name]: e.target.value,
     });
 
-    setFormData(programmerFormData);
+    // setFormData(programmerFormData);
   };
 
   return (
@@ -50,7 +52,7 @@ const ProgrammerProfileForm = ({ setFormData }) => {
         <input
           type='text'
           name='company'
-          value={company}
+          value={company && company}
           onChange={handleChange}
         />
       </div>
@@ -60,7 +62,7 @@ const ProgrammerProfileForm = ({ setFormData }) => {
         <input
           type='text'
           name='website'
-          value={website}
+          value={website && website}
           onChange={handleChange}
         />
       </div>

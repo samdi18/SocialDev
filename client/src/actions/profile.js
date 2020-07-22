@@ -15,6 +15,8 @@ export const getMyProfile = () => async (dispatch) => {
   try {
     const res = await axios.get('api/profile/myprofile');
 
+    console.log('In get profile: ', res.data);
+
     dispatch({
       type: GET_PROFILE,
       payload: res.data,
@@ -26,6 +28,45 @@ export const getMyProfile = () => async (dispatch) => {
     });
     // console.log(err.response.data.msg, "err to check");
     // dispatch(setAlert(err.response.data.msg, "danger"));
+  }
+};
+
+// Get all profiles
+export const getAllProfiles = () => async (dispatch) => {
+  // dispatch({ type: CLEAR_PROFILE });
+  try {
+    const res = await axios.get('api/profile/');
+
+    console.log('get all profiles: ', res.data);
+
+    dispatch({
+      type: GET_PROFILES,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Get profile by user id
+export const getProfileById = (id) => async (dispatch) => {
+  try {
+    const res = await axios.get(`api/profile/user/${id}`);
+
+    console.log('get user profile: ', res.data);
+
+    dispatch({
+      type: GET_PROFILE,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
   }
 };
 

@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 
-const HirerProfileForm = ({ setFormData }) => {
+const HirerProfileForm = ({ formData, setFormData }) => {
   const [openSocialInputs, toggleSocialInputs] = useState(false);
   const [hirerFormData, setHirerFormData] = useState({
     company: '',
@@ -26,7 +26,7 @@ const HirerProfileForm = ({ setFormData }) => {
     behance,
     youtube,
     instagram,
-  } = hirerFormData;
+  } = formData;
 
   const handleChange = (e) => {
     setHirerFormData({

@@ -13,25 +13,46 @@ const CreateProfile = ({
   profile: { profile, loading },
   history,
 }) => {
-  const [role, setRole] = useState('Programmer');
-  const [formData, setFormData] = useState({});
+  const initialState = {
+    company: '',
+    website: '',
+    location: '',
+    status: '',
+    skills: '',
+    github: '',
+    bio: '',
+    twitter: '',
+    facebook: '',
+    linkedin: '',
+    behance: '',
+    youtube: '',
+    instagram: '',
+  };
 
-  // useEffect(() => {
-  //   if (!profile) getMyProfile(); // !null = true
+  const [role, setRole] = useState('');
+  const [formData, setFormData] = useState(initialState);
 
-  //   if (!loading && profile) {
-  //     const profileData = { ...formData };
-  //     for (const key in profile) {
-  //       if (key in profileData) profileData[key] = profile[key];
-  //     }
-  //     for (const key in profile.social) {
-  //       if (key in profileData) profileData[key] = profile.social[key];
-  //     }
-  //     if (Array.isArray(profileData.skills))
-  //       profileData.skills = profileData.skills.join(', ');
-  //     setFormData(profileData);
-  //   }
-  // }, [loading, getMyProfile, profile]);
+  useEffect(() => {
+    console.log('Profile: ', profile);
+    getMyProfile(); // !null = true {}
+
+    if (!loading && profile) {
+      const profileData = { ...initialState };
+      for (const key in profile) {
+        if (key in profileData) profileData[key] = profile[key];
+      }
+      for (const key in profile.social) {
+        if (key in profileData) profileData[key] = profile.social[key];
+      }
+      if (Array.isArray(profileData.skills)) {
+        profileData.skills = profileData.skills.join(', ');
+      }
+      setRole(profile.role);
+
+      setFormData(profileData);
+    }
+  }, [loading, getMyProfile]);
+  console.log('FOR EDIT PROFILE', profile && formData);
 
   useEffect(() => {
     if (!profile) getMyProfile();
@@ -55,16 +76,19 @@ const CreateProfile = ({
         <form className='profile-form' onSubmit={handleSubmit}>
           <div className='form-element'>
             <label htmlFor='role'>* Role</label>
-            <select name='role' defaultValue={role} onChange={handleRole}>
+            <select name='role' value={role} onChange={handleRole}>
               <option value='Hirer'>Hirer</option>
               <option value='Programmer'>Programmer</option>
             </select>
           </div>
 
           {role === 'Programmer' ? (
-            <ProgrammerProfileForm setFormData={setFormData} />
+            <ProgrammerProfileForm
+              formData={formData}
+              setFormData={setFormData}
+            />
           ) : (
-            <HirerProfileForm setFormData={setFormData} />
+            <HirerProfileForm formData={formData} setFormData={setFormData} />
           )}
 
           <button className='submit-btn'>

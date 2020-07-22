@@ -4,7 +4,7 @@ import {
   CLEAR_PROFILE,
   UPDATE_PROFILE,
   GET_PROFILES,
-} from "../actions/types";
+} from '../actions/types';
 
 const initialState = {
   profile: {},
@@ -30,6 +30,11 @@ export default function (state = initialState, action) {
         ...state,
         profiles: payload,
         loading: false,
+      };
+    case CLEAR_PROFILE:
+      return {
+        ...state,
+        profile: null,
       };
     case PROFILE_ERROR:
       return {

@@ -1,44 +1,41 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import moment from "moment";
-import Moment from "react-moment";
-import { connect } from "react-redux";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import moment from 'moment';
+import Moment from 'react-moment';
 
-const Experience = ({ profile }) => {
-  const { experience } = profile;
-
+const Experience = ({ experience }) => {
   const experiences = experience.map((item) => (
     <li>
-      <div className="content">
-        <div className="content-info">
+      <div className='content'>
+        <div className='content-info'>
           <h4>{item.title}</h4>
           <h4>
             {item.company}
             <br />
             <span>
-              {"("}from{" "}
-              <Moment format="YYYY/MM/DD">{moment.utc(item.from)}</Moment> to{" "}
+              {'('}from{' '}
+              <Moment format='YYYY/MM/DD'>{moment.utc(item.from)}</Moment> to{' '}
               {item.to === null ? (
-                " Now"
+                ' Now'
               ) : (
-                <Moment format="YYYY/MM/DD">{moment.utc(item.to)}</Moment>
+                <Moment format='YYYY/MM/DD'>{moment.utc(item.to)}</Moment>
               )}
-              {")"}
+              {')'}
             </span>
           </h4>
         </div>
-        <div className="profile-btns">
+        <div className='profile-btns'>
           <img
-            src={require("../../images/pencil.svg")}
-            alt=""
-            className="icon"
+            src={require('../../images/pencil.svg')}
+            alt=''
+            className='icon'
           />
 
           <img
-            src={require("../../images/rubbish.svg")}
-            alt=""
-            className="icon edit-margin"
+            src={require('../../images/rubbish.svg')}
+            alt=''
+            className='icon edit-margin'
           />
         </div>
       </div>
@@ -46,29 +43,25 @@ const Experience = ({ profile }) => {
   ));
 
   return (
-    <div className="profile-content card-margin card">
-      <div className="profile-header">
+    <div className='profile-content card-margin card'>
+      <div className='profile-header'>
         <h3>Experience</h3>
-        <Link to="/add-experience">
+        <Link to='/add-experience'>
           <img
-            src={require("../../images/add-btn.svg")}
-            alt=""
-            className="icon"
+            src={require('../../images/add-btn.svg')}
+            alt=''
+            className='icon'
           />
         </Link>
       </div>
 
-      <ul className="scrollable">{experiences}</ul>
+      <ul className='scrollable'>{experiences}</ul>
     </div>
   );
 };
 
 Experience.propTypes = {
-  profile: PropTypes.object.isRequired,
+  experience: PropTypes.array.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  profile: state.profile.profile,
-});
-
-export default connect(mapStateToProps, null)(Experience);
+export default Experience;

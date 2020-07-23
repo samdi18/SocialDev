@@ -23,7 +23,7 @@ const Routes = (props) => {
         <PrivateRoute exact path='/' component={Home} />
         <PrivateRoute exact path='/create-profile' component={CreateProfile} />
         <PrivateRoute exact path='/my-profile' component={MyProfile} />
-        {/* <Route exact path='/profile' component={MyProfile} /> */}
+        <Route exact path='/profile/:id' component={MyProfile} />
         <PrivateRoute exact path='/edit-profile' component={CreateProfile} />
         <PrivateRoute
           exact

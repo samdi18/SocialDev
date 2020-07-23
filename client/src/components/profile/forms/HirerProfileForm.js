@@ -2,18 +2,18 @@ import React, { Fragment, useState } from 'react';
 
 const HirerProfileForm = ({ formData, setFormData }) => {
   const [openSocialInputs, toggleSocialInputs] = useState(false);
-  const [hirerFormData, setHirerFormData] = useState({
-    company: '',
-    website: '',
-    location: '',
-    bio: '',
-    twitter: '',
-    facebook: '',
-    linkedin: '',
-    behance: '',
-    youtube: '',
-    instagram: '',
-  });
+  // const [hirerFormData, setHirerFormData] = useState({
+  //   company: '',
+  //   website: '',
+  //   location: '',
+  //   bio: '',
+  //   twitter: '',
+  //   facebook: '',
+  //   linkedin: '',
+  //   behance: '',
+  //   youtube: '',
+  //   instagram: '',
+  // });
 
   const {
     company,
@@ -29,12 +29,12 @@ const HirerProfileForm = ({ formData, setFormData }) => {
   } = formData;
 
   const handleChange = (e) => {
-    setHirerFormData({
-      ...hirerFormData,
+    setFormData({
+      ...formData,
       [e.target.name]: e.target.value,
     });
 
-    setFormData(hirerFormData);
+    // setFormData(hirerFormData);
   };
 
   return (

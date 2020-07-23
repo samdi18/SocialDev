@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 //MAKE COMPONENT FOR SOCIALMEDIA ITEMS AND MAP THROUGH WITH TEMPLATE STRINGS
 //FOR THE IMAGE NAME SVG
 
-const SocialMedia = ({ profile: { social, githubusername } }) => {
+const SocialMedia = ({ social, githubusername }) => {
   const { youtube, twitter, behance, facebook, instagram, linkedin } = social;
 
   return (
@@ -82,11 +81,8 @@ const SocialMedia = ({ profile: { social, githubusername } }) => {
 };
 
 SocialMedia.propTypes = {
-  profile: PropTypes.object.isRequired,
+  social: PropTypes.object.isRequired,
+  githubusername: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  profile: state.profile.profile,
-});
-
-export default connect(mapStateToProps)(SocialMedia);
+export default SocialMedia;

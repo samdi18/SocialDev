@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const AboutMe = ({ profile }) => {
-  const { bio } = profile;
+const AboutMe = ({ bio }) => {
   return (
     <div className='card-margin card'>
       <div className='profile-header'>
@@ -23,11 +21,7 @@ const AboutMe = ({ profile }) => {
 };
 
 AboutMe.propTypes = {
-  profile: PropTypes.object.isRequired,
+  bio: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  profile: state.profile.profile,
-});
-
-export default connect(mapStateToProps)(AboutMe);
+export default AboutMe;

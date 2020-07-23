@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import Moment from 'react-moment';
 
-const Experience = ({ experience }) => {
+const Experience = ({ profile: { experience, user }, auth }) => {
+  const [dropdown, setDropdown] = useState(false);
+
   const experiences = experience.map((item) => (
     <li>
       <div className='content'>
@@ -27,12 +29,6 @@ const Experience = ({ experience }) => {
         </div>
         <div className='profile-btns'>
           <img
-            src={require('../../images/pencil.svg')}
-            alt=''
-            className='icon'
-          />
-
-          <img
             src={require('../../images/rubbish.svg')}
             alt=''
             className='icon edit-margin'
@@ -46,13 +42,17 @@ const Experience = ({ experience }) => {
     <div className='profile-content card-margin card'>
       <div className='profile-header'>
         <h3>Experience</h3>
-        <Link to='/add-experience'>
-          <img
-            src={require('../../images/add-btn.svg')}
-            alt=''
-            className='icon'
-          />
-        </Link>
+        {auth.isAuthenticated &&
+          auth.loading === false &&
+          auth.user._id === user._id && (
+            <Link to='/add-experience'>
+              <img
+                src={require('../../images/add-btn.svg')}
+                alt=''
+                className='icon'
+              />
+            </Link>
+          )}
       </div>
 
       <ul className='scrollable'>{experiences}</ul>

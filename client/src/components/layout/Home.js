@@ -13,16 +13,16 @@ const Home = ({ profile: { loading, profile }, getMyProfile }) => {
   }, [getMyProfile]);
   return (
     <Fragment>
-      {profile === null ? (
+      {profile === null && !loading ? (
         loading ? (
           ' '
         ) : (
-          <Redirect to='/create-profile' />
+          <CreateProfile />
         )
       ) : loading ? (
         ' '
       ) : (
-        <Redirect to='/my-profile' />
+        <MyProfile />
       )}
     </Fragment>
   );

@@ -33,7 +33,6 @@ export const getMyProfile = () => async (dispatch) => {
 
 // Get all profiles
 export const getAllProfiles = () => async (dispatch) => {
-  // dispatch({ type: CLEAR_PROFILE });
   try {
     const res = await axios.get('api/profile/');
 
@@ -53,8 +52,9 @@ export const getAllProfiles = () => async (dispatch) => {
 
 // Get profile by user id
 export const getProfileById = (id) => async (dispatch) => {
+  dispatch({ type: CLEAR_PROFILE });
   try {
-    const res = await axios.get(`api/profile/user/${id}`);
+    const res = await axios.get(`/api/profile/user/${id}`);
 
     console.log('get user profile by id: ', res.data);
 
@@ -216,3 +216,6 @@ export const deleteAccount = () => async (dispatch) => {
     }
   }
 };
+
+// clear profile
+export const clearProfile = () => ({ type: CLEAR_PROFILE });

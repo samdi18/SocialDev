@@ -1,6 +1,6 @@
-import axios from "axios";
-import { setAlert } from "./alert";
-import setAuthToken from "../utils/setAuthToken";
+import axios from 'axios';
+import { setAlert } from './alert';
+import setAuthToken from '../utils/setAuthToken';
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
@@ -9,7 +9,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAIL,
   LOGOUT,
-} from "./types";
+} from './types';
 
 // Load User
 export const loadUser = () => async (dispatch) => {
@@ -18,7 +18,7 @@ export const loadUser = () => async (dispatch) => {
   }
 
   try {
-    const res = await axios.get("api/auth");
+    const res = await axios.get('api/auth');
 
     dispatch({
       type: USER_LOADED,
@@ -35,11 +35,11 @@ export const loadUser = () => async (dispatch) => {
 export const register = (formData) => async (dispatch) => {
   const config = {
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   };
   try {
-    const res = await axios.post("api/users", formData, config);
+    const res = await axios.post('api/users', formData, config);
 
     dispatch({
       type: REGISTER_SUCCESS,
@@ -51,7 +51,7 @@ export const register = (formData) => async (dispatch) => {
     const errors = err.response.data.errors;
 
     if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
     }
 
     dispatch({
@@ -64,11 +64,11 @@ export const register = (formData) => async (dispatch) => {
 export const login = (formData) => async (dispatch) => {
   const config = {
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
     },
   };
   try {
-    const res = await axios.post("api/auth", formData, config);
+    const res = await axios.post('api/auth', formData, config);
 
     dispatch({
       type: LOGIN_SUCCESS,
@@ -80,7 +80,7 @@ export const login = (formData) => async (dispatch) => {
     const errors = err.response.data.errors;
 
     if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
     }
 
     dispatch({

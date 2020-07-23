@@ -52,11 +52,6 @@ const CreateProfile = ({
       setFormData(profileData);
     }
   }, [loading, getMyProfile]);
-  console.log('FOR EDIT PROFILE', profile && formData);
-
-  useEffect(() => {
-    if (!profile) getMyProfile();
-  });
 
   const handleRole = (e) => {
     setRole(e.target.value);

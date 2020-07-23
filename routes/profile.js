@@ -31,6 +31,39 @@ router.get('/myprofile', auth, async (req, res) => {
   }
 });
 
+// @route    GET api/profile
+// @desc     Get all profiles
+// @access   Public
+router.get('/', async (req, res) => {
+  try {
+    const profiles = await Profile.find().populate('user', [
+      'name',
+      'userImage',
+    ]);
+    res.json(profiles);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+// @route    GET api/profile/user/:user_id
+// @desc     Get profile by user ID
+// @access   Public
+router.get('/user/:user_id', checkObjectId('user_id'), async (req, res) => {
+  try {
+    const profile = await Profile.findOne({
+      user: req.params.user_id,
+    }).populate('user', ['name', 'userImage']);
+
+    if (!profile) return res.status(400).json({ msg: 'Profile not found' });
+
+    return res.json(profile);
+  } catch (err) {
+    console.error(err.message);
+    return res.status(500).json({ msg: 'Server error' });
+  }
+});
+
 // @route    POST api/profile
 // @desc     Create or update user profile
 // @access   Private
@@ -109,39 +142,6 @@ router.post(
     }
   }
 );
-
-// @route    GET api/profile
-// @desc     Get all profiles
-// @access   Public
-router.get('/', async (req, res) => {
-  try {
-    const profiles = await Profile.find().populate('user', [
-      'name',
-      'userImage',
-    ]);
-    res.json(profiles);
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send('Server Error');
-  }
-});
-// @route    GET api/profile/user/:user_id
-// @desc     Get profile by user ID
-// @access   Public
-router.get('/user/:user_id', checkObjectId('user_id'), async (req, res) => {
-  try {
-    const profile = await Profile.findOne({
-      user: req.params.user_id,
-    }).populate('user', ['name', 'userImage']);
-
-    if (!profile) return res.status(400).json({ msg: 'Profile not found' });
-
-    return res.json(profile);
-  } catch (err) {
-    console.error(err.message);
-    return res.status(500).json({ msg: 'Server error' });
-  }
-});
 
 // @route    DELETE api/profile
 // @desc     Delete profile, user & posts

@@ -3,8 +3,14 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
+import { clearProfile } from '../../actions/profile';
 
-const Navbar = ({ logout, auth: { isAuthenticated, loading }, match }) => {
+const Navbar = ({
+  logout,
+  auth: { isAuthenticated, loading },
+  match,
+  clearProfile,
+}) => {
   const [isOpen, setOpen] = useState(false);
   const toggleNav = () => {
     setOpen(!isOpen);
@@ -21,7 +27,7 @@ const Navbar = ({ logout, auth: { isAuthenticated, loading }, match }) => {
         <Link to='/members'>Threads</Link>
       </li>
       <li>
-        <Link to='/members'>Profile</Link>
+        <Link to='/my-profile'>Profile</Link>
       </li>
     </ul>
   );
@@ -44,7 +50,13 @@ const Navbar = ({ logout, auth: { isAuthenticated, loading }, match }) => {
       <nav>
         <div className='right-nav'>
           {!loading && isAuthenticated ? (
-            <div className='btn logout' onClick={logout}>
+            <div
+              className='btn logout'
+              onClick={() => {
+                logout();
+                clearProfile();
+              }}
+            >
               <span>Logout</span>
             </div>
           ) : (
@@ -78,4 +90,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { logout })(Navbar);
+export default connect(mapStateToProps, { logout, clearProfile })(Navbar);

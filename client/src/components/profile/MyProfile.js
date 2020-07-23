@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { getMyProfile, getProfileById } from '../../actions/profile';
 import PropTypes from 'prop-types';
@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 //component imports
 import AboutMe from './AboutMe';
 import SocialMedia from './SocialMedia';
-import Skills from './Skiils';
+import Skills from './Skills';
 import Education from './Education';
 import Experience from './Experience';
 
@@ -18,88 +18,88 @@ const MyProfile = ({
   match,
 }) => {
   useEffect(() => {
-    console.log('match param: ', match.params);
-    getProfileById('5f197348393590428888e514');
-  }, [getProfileById, match.params.id]);
+    //console.log('match param: ', match.params.id);
+    if (match.params.id) {
+      getProfileById(match.params.id);
+    } else getMyProfile();
+  }, [getProfileById, match.params.id, getMyProfile]);
 
   const { user } = auth;
 
-  const {
-    role,
-    website,
-    company,
-    status,
-    social,
-    bio,
-    skills,
-    githubusername,
-    experience,
-    education,
-  } = profile;
-
   return (
-    !loading &&
-    profile && (
-      <div className='profile-grid wrapper'>
-        <div className='flex-left'>
-          <div className='user-area'>
-            <div className='user-card profile-card'>
-              <div className='user-img'>
-                <img
-                  src={require('../../images/user.jpg')}
-                  alt=''
-                  className=''
-                />
+    <Fragment>
+      {profile == null ? (
+        <h4>Loading profile...</h4>
+      ) : (
+        !loading &&
+        profile && (
+          <div className='profile-grid wrapper'>
+            <div className='flex-left'>
+              <div className='user-area'>
+                <div className='user-card profile-card'>
+                  <div className='user-img'>
+                    <img
+                      src={require('../../images/user.jpg')}
+                      alt=''
+                      className=''
+                    />
+                  </div>
+                  <div className='user-info'>
+                    <h3 className='username'>
+                      {match.params.id
+                        ? profile && profile.user.name
+                        : user && user.name}
+                    </h3>
+                    <p>
+                      <span>
+                        <img
+                          src={require('../../images/work.svg')}
+                          alt=''
+                          className='icon'
+                        />
+                      </span>
+                      {profile.role && profile.role}
+                    </p>
+                    <p>
+                      <span>
+                        <img
+                          src={require('../../images/internet.svg')}
+                          alt=''
+                          className='icon'
+                        />
+                      </span>
+                      {profile.website && profile.website}
+                    </p>
+                    <p>
+                      {profile.status && profile.status} at{' '}
+                      {profile.company && profile.company}
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className='user-info'>
-                <h3 className='username'>{user && user.name}</h3>
-                <p>
-                  <span>
-                    <img
-                      src={require('../../images/work.svg')}
-                      alt=''
-                      className='icon'
-                    />
-                  </span>
-                  {role && role}
-                </p>
-                <p>
-                  <span>
-                    <img
-                      src={require('../../images/internet.svg')}
-                      alt=''
-                      className='icon'
-                    />
-                  </span>
-                  {website && website}
-                </p>
-                <p>
-                  {status && status} at {company && company}
-                </p>
+              <div className='about-area'>
+                <AboutMe profile={profile} auth={auth} />
+              </div>
+              <div className='social-media-area'>
+                <SocialMedia profile={profile} auth={auth} />
+              </div>
+              <div className='skills-area'>
+                <Skills profile={profile} auth={auth} />
+              </div>
+            </div>
+
+            <div className='flex-right'>
+              <div className='experience-area'>
+                <Experience profile={profile} auth={auth} />
+              </div>
+              <div className='education-area'>
+                <Education profile={profile} auth={auth} />
               </div>
             </div>
           </div>
-          <div className='about-area'>
-            <AboutMe bio={bio} />
-          </div>
-          <div className='social-media-area'>
-            <SocialMedia social={social} githubusername={githubusername} />
-          </div>
-          <div className='skills-area'>
-            <Skills skills={skills} />
-          </div>
-        </div>
-
-        <div className='flex-right'>
-          <div className='experience-area'>
-            <Experience experience={experience} />
-          </div>
-          <div className='education-area'>
-            <Education education={education} />
-          </div>
-        </div>
-      </div>
-    )
+        )
+      )}
+    </Fragment>
   );
 };
 

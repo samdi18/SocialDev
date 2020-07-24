@@ -11,7 +11,7 @@ const Education = ({ profile: { education, user }, auth }) => {
         {auth.isAuthenticated &&
           auth.loading === false &&
           auth.user._id === user._id && (
-            <Link to='/add-experience'>
+            <Link to='/add-education'>
               <img
                 src={require('../../images/add-btn.svg')}
                 alt=''

@@ -13,7 +13,7 @@ const Members = ({ profile: { profiles, loading }, getAllProfiles }) => {
   }, [getAllProfiles]);
 
   return (
-    <div className='members wrapper'>
+    <div className='members'>
       <div>
         <h1>Members</h1>
         <p>Meet all the members of our community</p>

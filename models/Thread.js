@@ -16,6 +16,9 @@ const ThreadSchema = mongoose.Schema({
   name: {
     type: String,
   },
+  email: {
+    type: String,
+  },
   userImage: {
     type: String,
   },

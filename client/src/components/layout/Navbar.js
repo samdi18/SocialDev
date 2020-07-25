@@ -24,7 +24,7 @@ const Navbar = ({
         <Link to='/members'>Members</Link>
       </li>
       <li>
-        <Link to='/members'>Threads</Link>
+        <Link to='/threads'>Threads</Link>
       </li>
       <li>
         <Link to='/my-profile'>Profile</Link>

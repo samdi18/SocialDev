@@ -11,6 +11,8 @@ import CreateProfile from '../profile/forms/CreateProfile';
 import AddExperienceForm from '../profile/forms/AddExperienceForm';
 import AddEducationForm from '../profile/forms/AddEducationForm';
 import Members from '../members/Members';
+import Threads from '../threads/Threads';
+import ThreadForm from '../threads/ThreadForm';
 
 const Routes = (props) => {
   return (
@@ -35,6 +37,8 @@ const Routes = (props) => {
           path='/add-education'
           component={AddEducationForm}
         />
+        <PrivateRoute exact path='/threads' component={Threads} />
+        <PrivateRoute exact path='/create-thread' component={ThreadForm} />
       </Switch>
     </Fragment>
   );

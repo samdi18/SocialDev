@@ -24,16 +24,17 @@ export default function (state = initialState, action) {
         threads: payload,
         loading: false,
       };
+
+    case GET_THREAD:
+      return {
+        ...state,
+        thread: payload,
+        loading: false,
+      };
     case ADD_THREAD:
       return {
         ...state,
         threads: [payload, ...state.threads],
-        loading: false,
-      };
-    case THREAD_ERROR:
-      return {
-        ...state,
-        error: payload,
         loading: false,
       };
     case UPDATE_LIKES:
@@ -51,6 +52,13 @@ export default function (state = initialState, action) {
       return {
         ...state,
         threads: state.threads.filter((thread) => thread._id !== payload),
+        loading: false,
+      };
+
+    case THREAD_ERROR:
+      return {
+        ...state,
+        error: payload,
         loading: false,
       };
     default:

@@ -12,6 +12,7 @@ import AddExperienceForm from '../profile/forms/AddExperienceForm';
 import AddEducationForm from '../profile/forms/AddEducationForm';
 import Members from '../members/Members';
 import Threads from '../threads/Threads';
+import Thread from '../thread/Thread';
 import ThreadForm from '../threads/ThreadForm';
 
 const Routes = (props) => {
@@ -39,6 +40,7 @@ const Routes = (props) => {
         />
         <PrivateRoute exact path='/threads' component={Threads} />
         <PrivateRoute exact path='/create-thread' component={ThreadForm} />
+        <PrivateRoute exact path='/threads/:id' component={Thread} />
       </Switch>
     </Fragment>
   );

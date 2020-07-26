@@ -54,12 +54,16 @@ const ThreadItem = ({
             </div>
 
             <div className='comment'>
-              <img
-                src={require('../../images/comment.svg')}
-                alt=''
-                className='comment-img'
-              />{' '}
-              {comments.length > 0 && <small>{comments.length} comments</small>}
+              <Link to={`/threads/${_id}`}>
+                <img
+                  src={require('../../images/comment.svg')}
+                  alt=''
+                  className='comment-img'
+                />{' '}
+                {comments.length > 0 && (
+                  <small>{comments.length} comments</small>
+                )}
+              </Link>
             </div>
           </div>
         </div>

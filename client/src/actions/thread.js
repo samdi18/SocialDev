@@ -6,6 +6,7 @@ import {
   UPDATE_LIKES,
   DELETE_THREAD,
   ADD_THREAD,
+  GET_THREAD,
 } from './types';
 
 // Get THREADs
@@ -96,6 +97,23 @@ export const addThread = (formData) => async (dispatch) => {
     });
 
     dispatch(setAlert('Post Created', 'success'));
+  } catch (err) {
+    dispatch({
+      type: THREAD_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Get THREAD
+export const getThread = (id) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/threads/${id}`);
+
+    dispatch({
+      type: GET_THREAD,
+      payload: res.data,
+    });
   } catch (err) {
     dispatch({
       type: THREAD_ERROR,

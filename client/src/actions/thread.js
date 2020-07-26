@@ -108,7 +108,7 @@ export const addThread = (formData) => async (dispatch) => {
 // Get THREAD
 export const getThread = (id) => async (dispatch) => {
   try {
-    const res = await axios.get(`/threads/${id}`);
+    const res = await axios.get(`/api/threads/${id}`);
 
     dispatch({
       type: GET_THREAD,

@@ -50,7 +50,7 @@ const ThreadItem = ({
                 className='like-img'
                 onClick={handleClick}
               />{' '}
-              <small>{likes.length > 0 && likes.length} likes</small>
+              <small>{likes && likes.length > 0 && likes.length} likes</small>
             </div>
 
             <div className='comment'>
@@ -60,7 +60,7 @@ const ThreadItem = ({
                   alt=''
                   className='comment-img'
                 />{' '}
-                {comments.length > 0 && (
+                {comments && comments.length > 0 && (
                   <small>{comments.length} comments</small>
                 )}
               </Link>

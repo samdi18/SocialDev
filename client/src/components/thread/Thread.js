@@ -8,8 +8,16 @@ import CommentForm from '../thread/CommentForm';
 import CommentItem from '../thread/CommentItem';
 import { getThread } from '../../actions/thread';
 
-const Thread = (props) => {
-  return <div>Post</div>;
+const Thread = ({ thread: { thread, loading }, match, getThread }) => {
+  useEffect(() => {
+    getThread(match.params.id);
+  }, [getThread, match.params.id]);
+
+  return loading || thread === null ? (
+    <Spinner />
+  ) : (
+    <ThreadItem thread={thread} />
+  );
 };
 
 Thread.propTypes = {

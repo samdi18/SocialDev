@@ -15,19 +15,21 @@ const Threads = ({ getThreads, thread: { threads, loading } }) => {
   return loading ? (
     <Spinner />
   ) : (
-    <div className='thread wrapper'>
-      <div className='create-post'>
-        <Link to='/create-thread' className='thread-btn'>
-          Create Post
-        </Link>
-      </div>
+    <div className='thread wrapper thread-wrapper'>
+      <div className='thread-items'>
+        <div className='create-post'>
+          <Link to='/create-thread' className='thread-btn'>
+            Create Post
+          </Link>
+        </div>
 
-      <div className='thread-card'>
-        <ul>
-          {threads.map((thread) => (
-            <ThreadItem key={thread._id} thread={thread} />
-          ))}
-        </ul>
+        <div className='thread-card'>
+          <ul>
+            {threads.map((thread) => (
+              <ThreadItem key={thread._id} thread={thread} />
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );

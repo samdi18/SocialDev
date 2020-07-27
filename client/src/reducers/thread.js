@@ -5,6 +5,8 @@ import {
   UPDATE_LIKES,
   DELETE_THREAD,
   ADD_THREAD,
+  ADD_COMMENT,
+  REMOVE_COMMENT,
 } from '../actions/types';
 
 const initialState = {
@@ -35,6 +37,27 @@ export default function (state = initialState, action) {
       return {
         ...state,
         threads: [payload, ...state.threads],
+        loading: false,
+      };
+    case ADD_COMMENT:
+      return {
+        ...state,
+        thread: {
+          ...state.thread,
+          comments: { ...state.thread, comments: payload },
+        },
+        loading: false,
+      };
+
+    case REMOVE_COMMENT:
+      return {
+        ...state,
+        thread: {
+          ...state.thread,
+          comments: state.thread.comments.filter(
+            (comment) => comment._id !== payload
+          ),
+        },
         loading: false,
       };
     case UPDATE_LIKES:

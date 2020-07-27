@@ -7,6 +7,8 @@ import {
   DELETE_THREAD,
   ADD_THREAD,
   GET_THREAD,
+  ADD_COMMENT,
+  REMOVE_COMMENT,
 } from './types';
 
 // Get THREADs
@@ -114,6 +116,44 @@ export const getThread = (id) => async (dispatch) => {
       type: GET_THREAD,
       payload: res.data,
     });
+  } catch (err) {
+    dispatch({
+      type: THREAD_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Add comment
+export const addComment = (threadId, formData) => async (dispatch) => {
+  try {
+    const res = await axios.post(`/api/threads/comment/${threadId}`, formData);
+
+    dispatch({
+      type: ADD_COMMENT,
+      payload: res.data,
+    });
+
+    dispatch(setAlert('Comment Added', 'success'));
+  } catch (err) {
+    dispatch({
+      type: THREAD_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Delete comment
+export const deleteComment = (threadId, commentId) => async (dispatch) => {
+  try {
+    await axios.delete(`/api/posts/comment/${threadId}/${commentId}`);
+
+    dispatch({
+      type: REMOVE_COMMENT,
+      payload: commentId,
+    });
+
+    dispatch(setAlert('Comment Removed', 'success'));
   } catch (err) {
     dispatch({
       type: THREAD_ERROR,

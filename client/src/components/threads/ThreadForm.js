@@ -19,7 +19,7 @@ const ThreadForm = ({ addThread }) => {
   };
 
   return (
-    <div className='thread-form wrapper'>
+    <div className='thread-form wrapper thread-wrapper'>
       <div className='card'>
         <div className='form-header'>
           <h3>Create New Post</h3>

@@ -5,6 +5,8 @@ import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import { addLike, removeLike, deleteThread } from '../../actions/thread';
 
+import CommentItem from '../thread/CommentItem';
+
 const ThreadItem = ({
   auth,
   addLike,
@@ -68,6 +70,9 @@ const ThreadItem = ({
           </div>
         </div>
       </li>
+      {comments.map((comment) => (
+        <CommentItem comment={comment} />
+      ))}
     </>
   );
 };

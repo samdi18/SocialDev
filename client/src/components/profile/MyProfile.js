@@ -9,6 +9,7 @@ import SocialMedia from './SocialMedia';
 import Skills from './Skills';
 import Education from './Education';
 import Experience from './Experience';
+import Spinner from '../layout/Spinner';
 
 const MyProfile = ({
   profile: { loading, profile },
@@ -26,9 +27,11 @@ const MyProfile = ({
 
   const { user } = auth;
 
-  return (
+  return loading || profile === null ? (
+    <Spinner />
+  ) : (
     <Fragment>
-      {profile == null ? (
+      {profile === null ? (
         <h4>Loading profile...</h4>
       ) : (
         !loading &&

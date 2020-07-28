@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 // Component imports
 import MemberItem from './MemberItem';
+import Spinner from '../layout/Spinner';
 
 import { getAllProfiles } from '../../actions/profile';
 
@@ -12,7 +13,9 @@ const Members = ({ profile: { profiles, loading }, getAllProfiles }) => {
     getAllProfiles();
   }, [getAllProfiles]);
 
-  return (
+  return loading || profiles.length === 0 ? (
+    <Spinner />
+  ) : (
     <div className='members'>
       <div>
         <h1>Members</h1>

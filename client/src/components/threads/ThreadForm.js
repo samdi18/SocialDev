@@ -22,7 +22,7 @@ const ThreadForm = ({ addThread }) => {
     <div className='thread-form wrapper thread-wrapper'>
       <div className='card'>
         <div className='form-header'>
-          <h3>Create New Post</h3>
+          <h3>Create New Thread</h3>
         </div>
 
         <form onSubmit={handleSubmit}>

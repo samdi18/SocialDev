@@ -6,12 +6,10 @@ import { addComment } from '../../actions/thread';
 const CommentForm = ({ threadId, addComment }) => {
   const [text, setText] = useState('');
   return (
-    <div className=''>
-      <div className=''>
-        <h3>Leave a Comment</h3>
-      </div>
+    <div className='comment-block'>
+      <h3>Leave a Comment</h3>
       <form
-        className=''
+        className='comment-form'
         onSubmit={(e) => {
           e.preventDefault();
           addComment(threadId, { text });
@@ -22,12 +20,12 @@ const CommentForm = ({ threadId, addComment }) => {
           name='text'
           cols='30'
           rows='5'
-          placeholder='Comment the post'
+          placeholder='Start typing your comment here...'
           value={text}
           onChange={(e) => setText(e.target.value)}
           required
         />
-        <input type='submit' className='' value='Submit' />
+        <input type='submit' className='' value='Comment' />
       </form>
     </div>
   );

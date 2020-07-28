@@ -5,30 +5,29 @@ import { connect } from 'react-redux';
 import Moment from 'react-moment';
 import { deleteComment } from '../../actions/thread';
 
-const CommentItem = ({ comment }) => (
-  <div className='post bg-white p-1 my-1'>
-    <h1>Elo, {comment.text}</h1>
-    {/* <div>
-      <Link to={`/profile/${user}`}>
-        <img className='round-img' src={avatar} alt='' />
-        <h4>{name}</h4>
-      </Link>
-    </div>
+const CommentItem = ({
+  comment: { _id, text, user, date },
+  auth,
+  threadId,
+  deleteComment,
+}) => (
+  <div className='comment-item'>
     <div>
-      <p className='my-1'>{text}</p>
+      <h4 className='comment-user'>{user.name}</h4>
       <p className='post-date'>
         Posted on <Moment format='YYYY/MM/DD'>{date}</Moment>
       </p>
+      <p className=''>{text}</p>
       {!auth.loading && user === auth.user._id && (
         <button
           onClick={() => deleteComment(threadId, _id)}
           type='button'
-          className='btn btn-danger'
+          className='btn'
         >
-          <i className='fas fa-times' />
+          Delete
         </button>
       )}
-    </div> */}
+    </div>
   </div>
 );
 

@@ -13,20 +13,32 @@ import CommentItem from '../thread/CommentItem';
 const Thread = ({ thread: { thread, loading }, match, getThread }) => {
   useEffect(() => {
     getThread(match.params.id);
-  }, [getThread, match.params.id]);
+  }, [getThread, match.params.id, thread.comments]);
 
   const { comments } = thread;
 
   return loading || thread === null ? (
     <Spinner />
   ) : (
-    <Fragment>
-      <ThreadItem thread={thread} />
-      <CommentForm thread={thread} threadId={thread._id} />
-      {comments.map((comment) => (
-        <h1>hello</h1>
-      ))}
-    </Fragment>
+    <div className='wrapper thread-wrapper'>
+      <div className='thread-block'>
+        <ThreadItem thread={thread} />
+        <CommentForm thread={thread} threadId={thread._id} />
+        {console.log('COMMENT', comments)}
+        {comments && comments.length > 0 && (
+          <div className='comments'>
+            {comments &&
+              comments.map((comment) => (
+                <CommentItem
+                  key={comment._id}
+                  comment={comment}
+                  threadId={thread._id}
+                />
+              ))}
+          </div>
+        )}
+      </div>
+    </div>
   );
 };
 

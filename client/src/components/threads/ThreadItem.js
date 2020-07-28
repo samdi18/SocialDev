@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Moment from 'react-moment';
 import { connect } from 'react-redux';
 import { addLike, removeLike, deleteThread } from '../../actions/thread';
+import { withRouter } from 'react-router-dom';
 
 import CommentItem from '../thread/CommentItem';
 
@@ -13,27 +14,31 @@ const ThreadItem = ({
   removeLike,
   deleteThread,
   thread: { _id, title, text, email, name, user, likes, comments, date },
+  history,
 }) => {
   const handleClick = () => {
     addLike(_id);
   };
+  const handleDelete = () => {
+    deleteThread(_id);
+    history.push('/threads');
+    console.log('delete thread');
+  };
   return (
-    <>
+    <div className='single-thread'>
       <li>
         <div className='thread-info'>
           <div className='thread-header'>
             <small>
-              Posted On <Moment format='YYYY/MM/DD'>{date}</Moment> by - {name}
+              Posted On <Moment format='YYYY/MM/DD'>{date}</Moment> by -{' '}
+              {email && email.split('@')[0]}
             </small>
             {!auth.loading && user === auth.user._id && (
               <img
                 src={require('../../images/rubbish.svg')}
                 alt=''
-                className='icon'
-                onClick={() => {
-                  deleteThread(_id);
-                  console.log('delete thread');
-                }}
+                className='icon-small'
+                onClick={handleDelete}
               />
             )}
           </div>
@@ -70,10 +75,7 @@ const ThreadItem = ({
           </div>
         </div>
       </li>
-      {comments.map((comment) => (
-        <CommentItem comment={comment} />
-      ))}
-    </>
+    </div>
   );
 };
 
@@ -89,5 +91,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, { addLike, removeLike, deleteThread })(
-  ThreadItem
+  withRouter(ThreadItem)
 );

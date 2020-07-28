@@ -18,7 +18,7 @@ export const loadUser = () => async (dispatch) => {
   }
 
   try {
-    const res = await axios.get('api/auth');
+    const res = await axios.get('/api/auth');
 
     dispatch({
       type: USER_LOADED,
@@ -39,7 +39,7 @@ export const register = (formData) => async (dispatch) => {
     },
   };
   try {
-    const res = await axios.post('api/users', formData, config);
+    const res = await axios.post('/api/users', formData, config);
 
     dispatch({
       type: REGISTER_SUCCESS,
@@ -68,7 +68,7 @@ export const login = (formData) => async (dispatch) => {
     },
   };
   try {
-    const res = await axios.post('api/auth', formData, config);
+    const res = await axios.post('/api/auth', formData, config);
 
     dispatch({
       type: LOGIN_SUCCESS,

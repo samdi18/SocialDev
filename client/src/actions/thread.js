@@ -14,7 +14,7 @@ import {
 // Get THREADs
 export const getThreads = () => async (dispatch) => {
   try {
-    const res = await axios.get('api/threads');
+    const res = await axios.get('/api/threads');
 
     dispatch({
       type: GET_THREADS,

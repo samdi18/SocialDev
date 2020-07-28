@@ -24,7 +24,6 @@ const Thread = ({ thread: { thread, loading }, match, getThread }) => {
       <div className='thread-block'>
         <ThreadItem thread={thread} />
         <CommentForm thread={thread} threadId={thread._id} />
-        {console.log('COMMENT', comments)}
         {comments && comments.length > 0 && (
           <div className='comments'>
             {comments &&

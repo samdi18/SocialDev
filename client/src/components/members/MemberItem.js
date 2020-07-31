@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 const MemberItem = ({ profile }) => {
   const {
-    user: { name, _id },
+    user: { name, _id, userImage },
     company,
     status,
   } = profile;
@@ -14,7 +14,7 @@ const MemberItem = ({ profile }) => {
     profile && (
       <li className='member-card'>
         <div className='user-img'>
-          <img src={require('../../images/user.jpg')} alt='' className='' />
+          <img src={userImage} alt='' className='' />
         </div>
         <div className='member-info'>
           <h2>{name}</h2>

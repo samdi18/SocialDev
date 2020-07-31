@@ -41,11 +41,7 @@ const MyProfile = ({
               <div className='user-area'>
                 <div className='user-card profile-card'>
                   <div className='user-img'>
-                    <img
-                      src={require('../../images/user.jpg')}
-                      alt=''
-                      className=''
-                    />
+                    <img src={user.userImage} alt='' className='' />
                   </div>
                   <div className='user-info'>
                     <h3 className='username'>

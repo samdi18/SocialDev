@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const Skills = ({ profile: { user, skills }, auth }) => {
-  const skillsArr = skills.map((skill) => <li className='tag'>{skill}</li>);
-
+  const skillsArr = skills.map(
+    (skill) => skill !== '' && <li className='tag'>{skill}</li>
+  );
+  console.log('skillesarrr ', skillsArr);
   return (
     <div className='card-margin card'>
       <div className='profile-header'>
@@ -22,7 +24,7 @@ const Skills = ({ profile: { user, skills }, auth }) => {
             </Link>
           )}
       </div>
-      <ul>{skillsArr.length === 0 ? '' : skillsArr}</ul>
+      {skillsArr.length >= 1 && <ul>{skillsArr}</ul>}
     </div>
   );
 };

@@ -9,6 +9,7 @@ const Navbar = ({
   logout,
   auth: { isAuthenticated, loading },
   match,
+  profile,
   clearProfile,
 }) => {
   const [isOpen, setOpen] = useState(false);
@@ -27,7 +28,11 @@ const Navbar = ({
         <Link to='/threads'>Threads</Link>
       </li>
       <li>
-        <Link to='/my-profile'>Profile</Link>
+        {profile ? (
+          <Link to='/my-profile'>Profile</Link>
+        ) : (
+          <Link to='/create-profile'>Profile</Link>
+        )}
       </li>
     </ul>
   );
@@ -44,7 +49,11 @@ const Navbar = ({
   return (
     <header>
       <span className='brand-logo'>
-        <Link to='/'> SocialDev</Link>
+        {isAuthenticated ? (
+          <Link to='/threads'> SocialDev</Link>
+        ) : (
+          <Link to='/'> SocialDev</Link>
+        )}
       </span>
 
       <nav>
@@ -61,7 +70,12 @@ const Navbar = ({
             </div>
           ) : (
             <div className='btn login'>
-              <Link to='/login'>Sign in</Link>
+              {/* have to use anchor instead of link  */}
+              {window.location.pathname === '/register' ? (
+                <a href='/login'>Sign in</a>
+              ) : (
+                <a href='/register'>Sign up</a>
+              )}
             </div>
           )}
 
@@ -88,6 +102,7 @@ Navbar.propTypes = {
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
+  profile: state.profile.profile,
 });
 
 export default connect(mapStateToProps, { logout, clearProfile })(Navbar);

@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import Moment from 'react-moment';
+import { deleteExperience } from '../../actions/profile';
 
-const Experience = ({ profile: { experience, user }, auth }) => {
+const Experience = ({
+  profile: { experience, user },
+  auth,
+  deleteExperience,
+}) => {
   const [dropdown, setDropdown] = useState(false);
 
   const experiences = experience.map((item) => (
@@ -32,6 +38,10 @@ const Experience = ({ profile: { experience, user }, auth }) => {
             src={require('../../images/rubbish.svg')}
             alt=''
             className='icon edit-margin'
+            onClick={() => {
+              deleteExperience(item._id);
+              console.log('hello delete experience' + item._id);
+            }}
           />
         </div>
       </div>
@@ -62,6 +72,7 @@ const Experience = ({ profile: { experience, user }, auth }) => {
 
 Experience.propTypes = {
   experience: PropTypes.array.isRequired,
+  deleteExperience: PropTypes.func.isRequired,
 };
 
-export default Experience;
+export default connect(null, { deleteExperience })(Experience);

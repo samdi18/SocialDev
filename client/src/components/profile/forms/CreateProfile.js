@@ -29,7 +29,7 @@ const CreateProfile = ({
     instagram: '',
   };
 
-  const [role, setRole] = useState('');
+  const [role, setRole] = useState('Hirer');
   const [formData, setFormData] = useState(initialState);
 
   useEffect(() => {

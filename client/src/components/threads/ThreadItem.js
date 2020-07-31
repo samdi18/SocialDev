@@ -43,12 +43,13 @@ const ThreadItem = ({
             )}
           </div>
           <div className='thread-content'>
-            <div className='title'>
-              <h3>{title}</h3>
-            </div>
+            <Link to={`/threads/${_id}`}>
+              <div className='title'>
+                <h3>{title}</h3>
+              </div>
+            </Link>
             <p>{text}</p>
           </div>
-
           <div className='thread-bottom'>
             <div className='like'>
               <img
@@ -67,10 +68,10 @@ const ThreadItem = ({
                   alt=''
                   className='comment-img'
                 />{' '}
-                {comments && comments.length > 0 && (
-                  <small>{comments.length} comments</small>
-                )}
               </Link>
+              <small>
+                {comments && comments.length > 0 ? comments.length : 0} comments
+              </small>
             </div>
           </div>
         </div>

@@ -1,8 +1,11 @@
 import React, { Fragment, useState } from 'react';
+import { connect } from 'react-redux';
 import moment from 'moment';
 import Moment from 'react-moment';
 
-const EducationItem = ({ item, auth, user }) => {
+import { deleteEducation } from '../../actions/profile';
+
+const EducationItem = ({ item, auth, user, deleteEducation }) => {
   const [dropdown, setDropdown] = useState(false);
   return (
     <Fragment>
@@ -48,6 +51,7 @@ const EducationItem = ({ item, auth, user }) => {
                   src={require('../../images/rubbish.svg')}
                   alt=''
                   className='icon edit-margin'
+                  onClick={() => deleteEducation(item._id)}
                 />
               </div>
             )}
@@ -58,4 +62,4 @@ const EducationItem = ({ item, auth, user }) => {
   );
 };
 
-export default EducationItem;
+export default connect(null, { deleteEducation })(EducationItem);
